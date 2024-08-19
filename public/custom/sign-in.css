@@ -1,0 +1,50 @@
+html,
+body {
+  height: auto;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+  margin: auto;
+  background-color: #f7f9fa;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.05);
+  position: relative;
+  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin .btn {
+  width: 100%;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.3rem;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+}
