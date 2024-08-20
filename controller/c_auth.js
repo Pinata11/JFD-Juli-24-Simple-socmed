@@ -27,6 +27,7 @@ module.exports = {
             if (user.length > 0) {
                 let passwordCocok = bcrypt.compareSync(password, user[0].password)
                 if (passwordCocok) {
+                    req.session.user = user
                     res.redirect('/feed')
                 } else {
                     let message = 'Password salah'
