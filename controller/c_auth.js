@@ -1,9 +1,10 @@
 const db = require('../config/database').db
 const execute = require('../config/database').execute
 const mysql = require('mysql2')
+const bcrypt = require('bcryptjs')
 
 let cari_username = (username) => {
-    return execute( mysql.format(
+    return execute(mysql.format(
         "SELECT * FROM user WHERE username = ?",
         [username]
     ))
@@ -11,18 +12,33 @@ let cari_username = (username) => {
 
 module.exports = {
     form_login: (req, res) => {
-        res.render('auth/form-login')
+        let dataview = {
+            message: req.query.msg
+        }
+        res.render('auth/form-login', dataview)
     },
 
     proses_login: async (req, res) => {
-        let username = req.body.form_username
-        let password = req.body.form_password
+        try {
+            let username = req.body.form_username
+            let password = req.body.form_password
+            let user = await cari_username(username)
 
-        let user = await cari_username(username)
-        if (user.length > 0) {
-            res.end('User ditemukan')
-        } else {
-            res.end('User tidak ditemukan')
+            if (user.length > 0) {
+                let passwordCocok = bcrypt.compareSync(password, user[0].password)
+                if (passwordCocok) {
+                    res.redirect('/feed')
+                } else {
+                    let message = 'Password salah'
+                    res.redirect(`/login?msg=${message}`)
+                }
+            } else {
+                let message = 'User tidak ditemukan'
+                res.redirect(`/login?msg=${message}`)
+            }
+        } catch (error) {
+            console.error('Error during login process:', error)
+            res.status(500).end('An error occurred during the login process')
         }
     },
 }

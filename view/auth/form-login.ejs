@@ -12,6 +12,12 @@
         <script src="/bootstrap/js/bootstrap.js"></script>
     </head>
     <body>
+        <% if (message) { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+        <% } %>
         <main class="form-signin">
             <form method="post" action="/proses-login">
                 <img class="mb-4" src="/gambar/logo.png" width="30%">
@@ -22,7 +28,7 @@
                     <label for="floatingInput">Username</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" name="form-password" placeholder="Password">
+                    <input type="password" class="form-control" name="form_password" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
 
