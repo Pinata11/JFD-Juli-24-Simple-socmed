@@ -12,10 +12,14 @@ let cari_username = (username) => {
 
 module.exports = {
     form_login: (req, res) => {
-        let dataview = {
-            message: req.query.msg
+        if (req.session.user) {
+            res.redirect('/feed')
+        } else {
+            let dataview = {
+                message: req.query.msg
+            }
+            res.render('auth/form-login', dataview)
         }
-        res.render('auth/form-login', dataview)
     },
 
     proses_login: async (req, res) => {
@@ -40,6 +44,15 @@ module.exports = {
         } catch (error) {
             console.error('Error during login process:', error)
             res.status(500).end('An error occurred during the login process')
+        }
+    },
+
+    cek_login: (req, res, next) => {
+        if (req.session.user) {
+            next()
+        } else {
+            let message = 'Sesi anda habis. Silahkan login kembali!'
+            res.redirect(`/login?msg=${message}`)
         }
     },
 }
