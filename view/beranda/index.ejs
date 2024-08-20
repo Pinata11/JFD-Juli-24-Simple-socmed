@@ -11,16 +11,26 @@
         <link rel="stylesheet" href="/custom/beranda.css">
         <link rel="stylesheet" href="/custom/cover.css">
         <script src="/bootstrap/js/bootstrap.js"></script>
+        <!-- BOOTSTRAP ICONS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- FONT AWESOME ICONS -->
+        <script src="https://kit.fontawesome.com/aa647bbc97.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="ripple.min.css">
     </head>
   
     <body class="d-flex h-100 text-center text-bg-dark">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <header class="mb-auto">
                 <div>
-                    <h3 class="float-md-start mb-0">SocMed</h3>
+                    <h3 class="float-md-start mb-0">
+                        <i class="fas fa-envelopes-bulk fa-lg mr-2"></i>
+                        SocMed
+                    </h3>
                     <nav class="nav nav-masthead justify-content-center float-md-end">
-                        <a class="nav-link fw-bold py-1 px-0 active" href="/">Beranda</a>
-                        <a class="nav-link fw-bold py-1 px-0" href="/login">Login</a>
+                        <a class="nav-link fw-bold py-1 px-0 active" href="/login">Login</a>
                     </nav>
                 </div>
             </header>
@@ -33,13 +43,57 @@
                     minima dolore quos delectus accusamus? Iusto error esse sint delectus?
                 </p>
                 <p class="lead">
-                <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Lihat selengkapnya ...</a>
+                    <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Lihat selengkapnya ...</a>
                 </p>
             </main>
+
+            <!-- FLOATING SIDEBAR -->
+            <nav class="floating-menu">
+                <ul class="side-menu">
+                    <li>
+                        <a href="/" class="ripple active" title="Home" id="home-link">
+                            <i class="fas fa-home fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ripple" title="Profile" id="profile-link">
+                            <i class="fas fa-user fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ripple" title="Add post" id="add-post-link">
+                            <i class="fas fa-plus fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ripple" title="Settings" id="settings-link">
+                            <i class="fas fa-gears fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="ripple" title="Logout" id="logout-link">
+                            <i class="fas fa-right-from-bracket fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="side-menu-bg"></div>
+            </nav>            
 
             <footer class="mt-auto text-white-50">
                 <p>Made by Davin</p>
             </footer>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const active = document.querySelectorAll('.side-menu li a');
+                
+                active.forEach(link => {
+                    link.addEventListener('click', function() {
+                        active.forEach(l => l.classList.remove('active'));
+                        this.classList.add('active');
+                    })
+                })
+            })
+        </script>
     </body>
 </html>

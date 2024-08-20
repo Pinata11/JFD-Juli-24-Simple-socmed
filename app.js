@@ -7,7 +7,7 @@ const c_auth = require('./controller/c_auth')
 
 
 app.use( express.urlencoded({extended:false}) )
-app.use(express.static('public'))
+app.use( express.static('public'))
 
 
 app.set('view engine', 'ejs')
