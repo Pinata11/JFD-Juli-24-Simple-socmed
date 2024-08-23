@@ -7,6 +7,7 @@ module.exports = {
         let dataview = {
             req: req,
             moment: moment,
+            message: req.query.msg,
         }
         res.render('profile/index', dataview)
     },
@@ -24,7 +25,7 @@ module.exports = {
             if (update.affectedRows > 0) {
                 req.session.user[0].nama_lengkap    = req.body.form_fullname
                 req.session.user[0].bio             = req.body.form_bio
-                res.redirect('/profile?berhasil edit profile')
+                res.redirect('/profile?msg=berhasil edit profile')
             }
         } catch (error) {
             throw error

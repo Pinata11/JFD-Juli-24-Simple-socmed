@@ -47,8 +47,14 @@
 </script>
 
 <!-- MAIN CONTENT -->
-<div class="container">
+<div class="container pt-3">
     <div class="row d-flex justify-content-center">
+      <% if (message) { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
         <h1>MY PROFILE</h1>
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
