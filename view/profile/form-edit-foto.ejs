@@ -1,0 +1,71 @@
+<%- include('../template/start.ejs') %>
+<%- include('../template/navbar.ejs') %>
+
+<!-- FLOATING SIDEBAR -->
+<nav class="floating-menu">
+  <ul class="side-menu">
+    <li>
+      <a href="/feed" class="ripple" title="Home" id="home-link">
+        <i class="fas fa-home fa-lg"></i>
+      </a>
+    </li>
+    <li>
+      <a
+        href="/profile"
+        class="ripple active"
+        title="Profile"
+        id="profile-link"
+      >
+        <i class="fas fa-user fa-lg"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/posting" class="ripple" title="Add post" id="add-post-link">
+        <i class="fas fa-plus fa-lg"></i>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="ripple" title="Settings" id="settings-link">
+        <i class="fas fa-gears fa-lg"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/logout" class="ripple" title="Logout" id="logout-link">
+        <i class="fas fa-right-from-bracket fa-lg"></i>
+      </a>
+    </li>
+  </ul>
+  <div class="side-menu-bg"></div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const active = document.querySelectorAll(".side-menu li a")
+
+    active.forEach((link) => {
+      link.addEventListener("click", function () {
+        active.forEach((l) => l.classList.remove("active"))
+        this.classList.add("active")
+      })
+    })
+  })
+</script>
+
+<div class="container pt-3">
+    <h1>Edit profile</h1>
+    <div class="row d-flex">
+        <div class="card bg-light w-75">
+            <div class="card-body">
+                <form action="/profile/proses-update-foto" method="post" enctype="multipart/form-dataa">
+                    <input type="file" name="form_uploadfoto" accept=".png, .jpeg, .jpg, .svg, .webp"><br>
+                    <button type="submit" class="btn btn-primary mt-2">
+                        <i class="fas fa-save ml-2 me-2"></i>
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../template/end.ejs') %>

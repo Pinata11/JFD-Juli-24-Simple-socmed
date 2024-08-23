@@ -4,6 +4,8 @@ const port          = 3000
 const passport      = require('passport')
 const cookieParser  = require('cookie-parser')
 const session       = require('express-session')
+const fileupload = require('express-fileupload')
+
 
 const c_beranda = require('./controller/c_beranda')
 const c_auth = require('./controller/c_auth')
@@ -28,6 +30,7 @@ app.use( passport.session() )
 
 app.use( express.urlencoded({extended:false}) )
 app.use( express.static('public') )
+app.use( fileupload() )
 
 
 app.set('view engine', 'ejs')
@@ -41,6 +44,7 @@ app.get('/feed', cek_login, c_feed.index)
 app.get('/profile', cek_login, c_profile.index)
 app.get('/profile/edit', cek_login, c_profile.form_edit)
 app.post('/profile/proses-update', cek_login, c_profile.proses_update)
+app.get('/profile/form-edit-foto', cek_login, c_profile.form_edit_foto)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)

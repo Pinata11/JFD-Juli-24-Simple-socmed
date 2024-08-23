@@ -31,4 +31,11 @@ module.exports = {
             throw error
         }
     },
+
+    form_edit_foto: (req, res) => {
+        let dataview = {
+            req: req,
+        }
+        res.render('profile/form-edit-foto', dataview)
+    },
 }
