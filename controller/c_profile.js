@@ -1,3 +1,4 @@
+const path = require('path')
 const m_user = require('./../model/m_user')
 const moment = require('moment')
 moment.locale('id')
@@ -37,5 +38,34 @@ module.exports = {
             req: req,
         }
         res.render('profile/form-edit-foto', dataview)
+    },
+
+    proses_update_foto: (req, res) => {
+        let foto = req.files.form_uploadfoto
+
+        // ganti nama file asli
+        let username = req.session.user[0].username.replaceAll('.', '-')
+        let datetime = moment().format('YYYYMMDD_HHmmss')
+        let file_name = username + '_' + datetime + '_' + foto.name
+        let folder_simpan = path.join(__dirname, '../public/upload', file_name)
+
+        // pakai function mv() untuk meletakkan file di suatu folder/direktori
+        foto.mv(folder_simpan, async (err) => {
+            if (err) {
+                return res.status(500).send(err)
+            }
+            // jika fotonya berhasil terupload ke folder_simpan
+            try {
+                let update = await m_user.update_foto(req, file_name)
+                if (update.affectedRows > 0) {
+                    // ubah data session yang lama
+                    req.session.user[0].foto = file_name
+                    // kembalikan ke halaman profile
+                    res.redirect('/profile?msg=berhasil update profile picture')
+                }
+            } catch (error) {
+                throw error
+            }
+        })
     },
 }

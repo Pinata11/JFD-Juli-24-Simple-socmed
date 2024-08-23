@@ -45,6 +45,7 @@ app.get('/profile', cek_login, c_profile.index)
 app.get('/profile/edit', cek_login, c_profile.form_edit)
 app.post('/profile/proses-update', cek_login, c_profile.proses_update)
 app.get('/profile/form-edit-foto', cek_login, c_profile.form_edit_foto)
+app.post('/profile/proses-update-foto', cek_login, c_profile.proses_update_foto)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)

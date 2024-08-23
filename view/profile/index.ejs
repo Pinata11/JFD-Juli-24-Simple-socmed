@@ -62,7 +62,11 @@
           <a href="/profile/form-edit-foto" class="btn btn-sm btn-secondary float-end">
             <i class="fas fa-edit"></i>
           </a>
-          <img src="/gambar/default.jpg" class="img-fluid rounded-start">
+          <% if ( ! req.session.user[0].foto) { %>
+            <img src="/gambar/default.jpg" class="img-fluid rounded-start">
+          <% } else { %>
+            <img src="/upload/<%= req.session.user[0].foto %>" class="img-fluid rounded-start">
+          <% } %>
         </div>
         <div class="col-md-8">
           <div class="card-body">

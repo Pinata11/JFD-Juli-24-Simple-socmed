@@ -15,4 +15,16 @@ module.exports = {
             [data, id_user]
         ))
     },
+
+    update_foto: (req, file_name) => {
+        let data = {
+            foto: file_name,
+            last_update: moment().format('YYYY-MM-DD HH:mm:ss'),
+        }
+        let id_user = req.session.user[0].id
+        return execute( mysql.format(
+            'UPDATE user SET ? WHERE id = ?',
+            [data, id_user]
+        ))
+    },
 }
