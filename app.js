@@ -40,6 +40,7 @@ app.post('/proses-login', c_auth.proses_login)
 app.get('/feed', cek_login, c_feed.index)
 app.get('/profile', cek_login, c_profile.index)
 app.get('/profile/edit', cek_login, c_profile.form_edit)
+app.post('/profile/proses-update', cek_login, c_profile.proses_update)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)

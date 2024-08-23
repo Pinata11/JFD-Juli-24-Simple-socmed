@@ -60,11 +60,11 @@
                     <div class="row">
                         <div class="col-lg-7 mb-3 w-75">
                             <label class="form-label">Fullname</label>
-                            <input type="email" class="form-control" name="form_fullname" placeholder="Input your fullname">
+                            <input type="text" class="form-control" name="form_fullname" placeholder="Input your fullname" value="<%= req.session.user[0].nama_lengkap %>">
                         </div>
                         <div class="col-lg-7 mb-3 w-75">
                             <label class="form-label">Bio</label>
-                            <textarea name="form_bio" class="form-control" placeholder="Input your bio"></textarea>
+                            <textarea name="form_bio" class="form-control" placeholder="Input your bio"><%= req.session.user[0].bio %></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">

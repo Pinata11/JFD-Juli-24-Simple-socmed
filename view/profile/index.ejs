@@ -52,20 +52,20 @@
         <h1>MY PROFILE</h1>
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/gambar/default.jpg" class="img-fluid rounded-start">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <a href="/profile/edit" class="btn btn-primary-outline float-end">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                    <h5 class="card-title"><%= req.session.user[0].nama_lengkap %></h5>
-                    <p class="card-title"><small class="text-body-tertiary">Username : <%= req.session.user[0].username %></small></p>
-                    <p class="card-text"><%= req.session.user[0].bio %></p>
-                    <p class="card-text"><small class="text-body-tertiary">Last updated : <%= req.session.user[0].last_update %></small></p>
-                </div>
-            </div>
+              <div class="col-md-4">
+                  <img src="/gambar/default.jpg" class="img-fluid rounded-start">
+              </div>
+              <div class="col-md-8">
+                  <div class="card-body">
+                      <a href="/profile/edit" class="btn btn-primary-outline float-end">
+                          <i class="fas fa-edit"></i>
+                      </a>
+                      <h5 class="card-title"><%= req.session.user[0].nama_lengkap %></h5>
+                      <p class="card-title"><small class="text-body-tertiary">Username : <%= req.session.user[0].username %></small></p>
+                      <p class="card-text"><%= req.session.user[0].bio %></p>
+                      <p class="card-text"><small class="text-body-tertiary">Last updated : <%= moment(req.session.user[0].last_update).format('DD MMM YY HH:mm') %></small></p>
+                  </div>
+              </div>
             </div>
         </div>
     </div>
