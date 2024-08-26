@@ -10,12 +10,12 @@
       </a>
     </li>
     <li>
-      <a href="/profile" class="ripple active" title="Profile" id="profile-link">
+      <a href="/profile" class="ripple" title="Profile" id="profile-link">
         <i class="fas fa-user fa-lg"></i>
       </a>
     </li>
     <li>
-      <a href="/posting" class="ripple" title="Add post" id="add-post-link">
+      <a href="/posting" class="ripple active" title="Add post" id="add-post-link">
         <i class="fas fa-plus fa-lg"></i>
       </a>
     </li>
@@ -55,22 +55,22 @@
   <% } %>
   <h1>Create new post</h1>
   <div class="row d-flex justify-content-center">
-    <div class="card bg-light w-75">
+    <div class="card bg-light w-75 py-2">
       <div class="card-body">
-        <form action="/posting/tambah" method="post">
+        <form action="/posting/tambah" method="post" enctype="multipart/form-data">
 
           <div class="row mb-3">
             <div class="col-lg-4">
               <label class="form-label">Media 1</label>
-              <input type="file" name="form_uploadfoto" accept=".png, .jpeg, .jpg, .svg, .webp, .mp4, .mkv"><br>
+              <input type="file" name="form_media1" accept=".png, .jpeg, .jpg, .svg, .webp, .mp4, .mkv"><br>
             </div>
             <div class="col-lg-4">
               <label class="form-label">Media 2</label>
-              <input type="file" name="form_uploadfoto" accept=".png, .jpeg, .jpg, .svg, .webp, .mp4, .mkv"><br>
+              <input type="file" name="form_media2" accept=".png, .jpeg, .jpg, .svg, .webp, .mp4, .mkv"><br>
             </div>
             <div class="col-lg-4">
               <label class="form-label">Media 3</label>
-              <input type="file" name="form_uploadfoto" accept=".png, .jpeg, .jpg, .svg, .webp, .mp4, .mkv"><br>
+              <input type="file" name="form_media3" accept=".png, .jpeg, .jpg, .svg, .webp, .mp4, .mkv"><br>
             </div>
           </div>
 
