@@ -74,7 +74,7 @@ module.exports = {
                     // proses insert ke database
                     let insert = await m_post.insert(req)
                     if (insert.affectedRows > 0) {
-                        return res.redirect('/feed?msg=Media uploaded!')
+                        return res.redirect(`/feed?msg=Media uploaded!${pesan}`)
                     }
                 }
             } catch (error) {
