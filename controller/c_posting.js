@@ -34,6 +34,43 @@ module.exports = {
                 else if (media3.size > max_size) {
                     return res.redirect('/posting?msg=Upload failed! Media3 exceeds size limit.')
                 } else {
+                    // ganti nama file asli
+                    let username = req.session.user[0].username.replaceAll('.', '-')
+                    let datetime = moment().format('YYYYMMDD_HHmmss')
+
+                    let file1_name = username + '_' + datetime + '_' + media1.name
+                    let file2_name = username + '_' + datetime + '_' + media2.name
+                    let file3_name = username + '_' + datetime + '_' + media3.name
+
+                    let folder1_simpan = path.join(__dirname, '../public/feed', file1_name)
+                    let folder2_simpan = path.join(__dirname, '../public/feed', file2_name)
+                    let folder3_simpan = path.join(__dirname, '../public/feed', file3_name)
+
+                    let pesan = ''
+                    media1.mv(folder1_simpan, async (err) => {
+                        if (err) {
+                            pesan += `<br>Upload failed! Media 1 exceeds size limit.`
+                        } else {
+                            pesan += `<br>Success! Media 1 uploaded.`
+                        }
+                    })
+
+                    media2.mv(folder2_simpan, async (err) => {
+                        if (err) {
+                            pesan += `<br>Upload failed! Media 2 exceeds size limit.`
+                        } else {
+                            pesan += `<br>Success! Media 2 uploaded.`
+                        }
+                    })
+
+                    media3.mv(folder3_simpan, async (err) => {
+                        if (err) {
+                            pesan += `<br>Upload failed! Media 3 exceeds size limit.`
+                        } else {
+                            pesan += `<br>Success! Media 3 uploaded.`
+                        }
+                    })
+
                     // proses insert ke database
                     let insert = await m_post.insert(req)
                     if (insert.affectedRows > 0) {

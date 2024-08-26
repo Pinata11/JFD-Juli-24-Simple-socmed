@@ -1,8 +1,9 @@
 module.exports = {
     index: (req, res) => {
         let dataview = {
-            req: req
+            req: req,
+            message: req.query.msg
         }
         res.render('feed/index', dataview)
-    }
+    },
 }
