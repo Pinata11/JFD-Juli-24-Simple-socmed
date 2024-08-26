@@ -12,6 +12,7 @@ const c_auth = require('./controller/c_auth')
 const cek_login = c_auth.cek_login
 const c_feed = require('./controller/c_feed')
 const c_profile = require('./controller/c_profile')
+const c_posting = require('./controller/c_posting')
 
 
 // settingan session untuk login
@@ -41,11 +42,14 @@ app.get('/', c_beranda.index)
 app.get('/login', c_auth.form_login)
 app.post('/proses-login', c_auth.proses_login)
 app.get('/feed', cek_login, c_feed.index)
+
 app.get('/profile', cek_login, c_profile.index)
 app.get('/profile/edit', cek_login, c_profile.form_edit)
 app.post('/profile/proses-update', cek_login, c_profile.proses_update)
 app.get('/profile/form-edit-foto', cek_login, c_profile.form_edit_foto)
 app.post('/profile/proses-update-foto', cek_login, c_profile.proses_update_foto)
+
+app.get('/posting', cek_login, c_posting.index)
 
 app.listen(port, ()=>{
     console.log(`Aplikasi sudah siap, buka http://localhost:${port}`)
