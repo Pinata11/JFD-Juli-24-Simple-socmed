@@ -35,8 +35,10 @@ module.exports = {
                     return res.redirect('/posting?msg=Upload failed! Media3 exceeds size limit.')
                 } else {
                     // proses insert ke database
-                    // let insert = await db.insert
-                    console.log('Inserting media')
+                    let insert = await m_post.insert(req)
+                    if (insert.affectedRows > 0) {
+                        return res.redirect('/feed?msg=Media uploaded!')
+                    }
                 }
             } catch (error) {
                 // menangkap error dari proses try (insert ke database)
