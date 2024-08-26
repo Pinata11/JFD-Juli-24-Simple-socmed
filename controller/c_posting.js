@@ -42,32 +42,32 @@ module.exports = {
                     let file2_name = username + '_' + datetime + '_' + media2.name
                     let file3_name = username + '_' + datetime + '_' + media3.name
 
-                    let folder1_simpan = path.join(__dirname, '../public/feed', file1_name)
-                    let folder2_simpan = path.join(__dirname, '../public/feed', file2_name)
-                    let folder3_simpan = path.join(__dirname, '../public/feed', file3_name)
+                    let folder1_simpan = path.join(__dirname, '../public/feed/', file1_name)
+                    let folder2_simpan = path.join(__dirname, '../public/feed/', file2_name)
+                    let folder3_simpan = path.join(__dirname, '../public/feed/', file3_name)
 
                     let pesan = ''
                     media1.mv(folder1_simpan, async (err) => {
                         if (err) {
-                            pesan += `<br>Upload failed! Media 1 exceeds size limit.`
+                            pesan += `<br>Media 1 failed to upload.`
                         } else {
-                            pesan += `<br>Success! Media 1 uploaded.`
+                            pesan += `<br>Media 1 successfully uploaded.`
                         }
                     })
 
                     media2.mv(folder2_simpan, async (err) => {
                         if (err) {
-                            pesan += `<br>Upload failed! Media 2 exceeds size limit.`
+                            pesan += `<br>Media 2 failed to upload.`
                         } else {
-                            pesan += `<br>Success! Media 2 uploaded.`
+                            pesan += `<br>Media 2 successfully uploaded.`
                         }
                     })
 
                     media3.mv(folder3_simpan, async (err) => {
                         if (err) {
-                            pesan += `<br>Upload failed! Media 3 exceeds size limit.`
+                            pesan += `<br>Media 3 failed to upload.`
                         } else {
-                            pesan += `<br>Success! Media 3 uploaded.`
+                            pesan += `<br>Media 3 successfully uploaded.`
                         }
                     })
 
