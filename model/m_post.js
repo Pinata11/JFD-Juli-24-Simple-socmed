@@ -11,8 +11,7 @@ module.exports = {
             file2       : (file2_name) ? file2_name : null,
             file3       : (file3_name) ? file3_name : null,
             created_at  : moment().format('YYYY-MM-DD HH:mm:ss'),
-            // image_path: req.file.path.replace('public', ''),
-            // updated_at: moment().format('YYYY-MM-DD HH:mm:ss'),
+            created_by  : req.session.user[0].id,
         }
         return execute( mysql.format(
             `INSERT INTO posts SET ?`,
@@ -22,8 +21,12 @@ module.exports = {
 
     get_all: function() {
         return execute( mysql.format(
-            `SELECT * FROM posts
-            ORDER BY id DESC`
+            `SELECT
+                p.*,
+                u.username, u.nama_lengkap, u.foto
+            FROM post AS p
+            LEFT JOIN user AS u ON u.id = p.created_by  
+            ORDER BY p.id DESC`
         ))
     },
 }
