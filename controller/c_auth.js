@@ -55,4 +55,10 @@ module.exports = {
             res.redirect(`/login?msg=${message}`)
         }
     },
+
+    proses_logout: (req, res) => {
+        req.session.destroy( (err)=>{
+            res.redirect('/')
+        })
+    },
 }

@@ -7,9 +7,10 @@ body {
   z-index: 0;
   right: 10px;
   position: fixed;
-  display: inline-block;
+  display: inline-flexbox;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 1;
 }
 
 .side-menu {

@@ -24,7 +24,7 @@ module.exports = {
             `SELECT
                 p.*,
                 u.username, u.nama_lengkap, u.foto
-            FROM post AS p
+            FROM posts AS p
             LEFT JOIN user AS u ON u.id = p.created_by  
             ORDER BY p.id DESC`
         ))
